@@ -60,7 +60,11 @@ public class PostsApiControllerTest {
         // given
         String title = "title";
         String content = "content";
-        PostsSaveRequestDto requestDto = new PostsSaveRequestDto(title, content, "author");
+        PostsSaveRequestDto requestDto = PostsSaveRequestDto.builder()
+                .title(title)
+                .content(content)
+                .author("author")
+                .build();
 
         String url = "http://localhost:" + port + "/api/v1/posts";
 
@@ -80,13 +84,20 @@ public class PostsApiControllerTest {
     @WithMockUser(roles = "USER")
     public void Posts_수정된다() throws Exception {
         // given
-        Posts savedPosts = postsRepository.save(new Posts("title", "content", "author"));
+        Posts savedPosts = postsRepository.save(Posts.builder()
+                .title("title")
+                .content("content")
+                .author("author")
+                .build());
 
         Long updateId = savedPosts.getId();
         String expectedTitle = "title2";
         String expectedContent = "content2";
 
-        PostsUpdateRequestDto requestDto = new PostsUpdateRequestDto(expectedTitle, expectedContent);
+        PostsUpdateRequestDto requestDto = PostsUpdateRequestDto.builder()
+                .title(expectedTitle)
+                .content(expectedContent)
+                .build();
 
         String url = "http://localhost:" + port + "/api/v1/posts/" + updateId;
 

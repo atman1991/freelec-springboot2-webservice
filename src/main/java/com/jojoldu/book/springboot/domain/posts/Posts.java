@@ -1,9 +1,14 @@
 package com.jojoldu.book.springboot.domain.posts;
 
 import com.jojoldu.book.springboot.domain.BaseTimeEntity;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
+@NoArgsConstructor
 @Entity
 public class Posts extends BaseTimeEntity {
     @Id
@@ -18,8 +23,7 @@ public class Posts extends BaseTimeEntity {
 
     private String author;
 
-    public Posts() {}
-
+    @Builder
     public Posts(String title, String content, String author) {
         this.title = title;
         this.content = content;
@@ -30,21 +34,4 @@ public class Posts extends BaseTimeEntity {
         this.title = title;
         this.content = content;
     }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
 }

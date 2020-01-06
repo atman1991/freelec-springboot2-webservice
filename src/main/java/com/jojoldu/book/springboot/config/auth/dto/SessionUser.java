@@ -1,9 +1,11 @@
 package com.jojoldu.book.springboot.config.auth.dto;
 
 import com.jojoldu.book.springboot.domain.user.User;
+import lombok.Getter;
 
 import java.io.Serializable;
 
+@Getter
 public class SessionUser implements Serializable {
     private String name;
     private String email;
@@ -17,15 +19,4 @@ public class SessionUser implements Serializable {
         this.picture = user.getPicture();
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
 }

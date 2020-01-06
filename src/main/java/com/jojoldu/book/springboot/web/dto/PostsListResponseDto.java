@@ -2,10 +2,12 @@ package com.jojoldu.book.springboot.web.dto;
 
 
 import com.jojoldu.book.springboot.domain.posts.Posts;
+import lombok.Getter;
 
 import java.time.LocalDateTime;
 
-public class PostsListResponseDto {
+@Getter
+public class    PostsListResponseDto {
     private Long id;
     private String title;
     private String author;
@@ -18,22 +20,6 @@ public class PostsListResponseDto {
         this.title = entity.getTitle();
         this.author = entity.getAuthor();
         this.modifiedDate = entity.getModifyDate();
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getAuthor() {
-        return author;
-    }
-
-    public LocalDateTime getModifiedDate() {
-        return modifiedDate;
     }
 
 }

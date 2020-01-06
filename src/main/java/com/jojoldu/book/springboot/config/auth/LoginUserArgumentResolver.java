@@ -1,7 +1,7 @@
 package com.jojoldu.book.springboot.config.auth;
 
 import com.jojoldu.book.springboot.config.auth.dto.SessionUser;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.core.MethodParameter;
 import org.springframework.stereotype.Component;
 import org.springframework.web.bind.support.WebDataBinderFactory;
@@ -11,10 +11,10 @@ import org.springframework.web.method.support.ModelAndViewContainer;
 
 import javax.servlet.http.HttpSession;
 
+@RequiredArgsConstructor
 @Component
 public class LoginUserArgumentResolver implements HandlerMethodArgumentResolver {
-    @Autowired
-    private HttpSession httpSession;
+    private final HttpSession httpSession;
 
     @Override
     public boolean supportsParameter(MethodParameter parameter) {

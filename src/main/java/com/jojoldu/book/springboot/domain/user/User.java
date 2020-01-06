@@ -1,9 +1,14 @@
 package com.jojoldu.book.springboot.domain.user;
 
 import com.jojoldu.book.springboot.domain.BaseTimeEntity;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
+@Getter
+@NoArgsConstructor
 @Entity
 public class User extends BaseTimeEntity {
     @Id
@@ -23,8 +28,7 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false)
     private Role role;
 
-    public User() {}
-
+    @Builder
     public User(String name, String email, String picture, Role role) {
         this.name = name;
         this.email = email;
@@ -40,26 +44,7 @@ public class User extends BaseTimeEntity {
     }
 
     public String getRoleKey() {
-        return role.getKey();
+        return this.role.getKey();
     }
 
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getPicture() {
-        return picture;
-    }
-
-    public Role getRole() {
-        return role;
-    }
 }
